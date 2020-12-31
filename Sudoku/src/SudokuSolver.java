@@ -66,14 +66,13 @@ public class SudokuSolver {
 	}
 	
 	private boolean fitsInSquare(int number, int x, int y, int[][] matrix) {
-		for (int i = x - x % 3; i < x - x % 3 + 3; i++) {
-			for (int j = y - y % 3; j < y - y % 3 + 3; j++) {
+		for (int i = x - x % 3; i < x - x % 3 + 3; i++)
+			for (int j = y - y % 3; j < y - y % 3 + 3; j++)
 				if (matrix[i][j] == number)
 					return false;
-				}
-		}
 		return true;
 	}
+	
 	private boolean fitsInSudoku(int number, int x, int y, int[][] matrix) {
 		return fitsInColumn(number, x, y, matrix) && 
 				fitsInRow(number, x, y, matrix) && fitsInSquare(number, x, y, matrix);
