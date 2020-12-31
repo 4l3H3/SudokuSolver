@@ -51,21 +51,31 @@ public class SudokuSolver {
 	}
 
 
-	private boolean fitsInSudoku(int number, int x, int y, int[][] matrix) {
+	private boolean fitsInRow(int number, int x, int y, int[][] matrix) {
 		for (int i = 0; i < matrix.length; i++)
 			if (matrix[i][y] == number)
 				return false;
+		return true;
+	}
+	
+	private boolean fitsInColumn(int number, int x, int y, int[][] matrix) {
 		for (int j = 0; j < matrix.length; j++)
 			if (matrix[x][j] == number)
 				return false;
-		int grenze_a = x - x % 3 + 3;
-		int grenze_b = y - y % 3 + 3;
-		for (int i = x - x % 3; i < grenze_a; i++) {
-			for (int j = y - y % 3; j < grenze_b; j++) {
+		return true;
+	}
+	
+	private boolean fitsInSquare(int number, int x, int y, int[][] matrix) {
+		for (int i = x - x % 3; i < x - x % 3 + 3; i++) {
+			for (int j = y - y % 3; j < y - y % 3 + 3; j++) {
 				if (matrix[i][j] == number)
 					return false;
 				}
 		}
 		return true;
+	}
+	private boolean fitsInSudoku(int number, int x, int y, int[][] matrix) {
+		return fitsInColumn(number, x, y, matrix) && 
+				fitsInRow(number, x, y, matrix) && fitsInSquare(number, x, y, matrix);
 	}
 }
