@@ -16,18 +16,18 @@ public class SudokuSolver {
 				   { 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
 
 	public SudokuSolver() {
-		if (solveProblem(matrix))
+		if (solveSudoku(matrix))
 			printSolution(matrix);
 	}
 
-	private boolean solveProblem(int[][] matrix) {
+	private boolean solveSudoku(int[][] matrix) {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix.length; j++) {
 				if (matrix[i][j] == EMPTY) {
 					for (int number = 1; number < 10; number++) {
 						if (fitsInSudoku(number, i, j, matrix)) {
 							matrix[i][j] = number;
-							if (solveProblem(matrix))
+							if (solveSudoku(matrix))
 								return true;
 							else
 								matrix[i][j] = 0;
