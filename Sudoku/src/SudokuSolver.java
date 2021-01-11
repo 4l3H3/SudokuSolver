@@ -16,8 +16,7 @@ public class SudokuSolver {
 				   { 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
 
 	public SudokuSolver() {
-		if (solveSudoku(matrix))
-			printSolution(matrix);
+		solveSudoku(matrix);
 	}
 
 	private boolean solveSudoku(int[][] matrix) {
@@ -28,9 +27,8 @@ public class SudokuSolver {
 						if (fitsInSudoku(number, i, j, matrix)) {
 							matrix[i][j] = number;
 							if (solveSudoku(matrix))
-								return true;
-							else
-								matrix[i][j] = 0;
+								printSolution(matrix);
+							matrix[i][j] = 0;
 						}
 					}
 					return false;
