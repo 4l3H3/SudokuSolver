@@ -14,6 +14,7 @@ public class SudokuSolver {
 				   { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, 
 				   { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				   { 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+	private int count = 0;
 
 	public SudokuSolver() {
 		solveSudoku(matrix);
@@ -39,6 +40,7 @@ public class SudokuSolver {
 	}
 
 	private void printSolution(int[][] matrix) {
+		System.out.println("Loesung: " + ++count);
 		for (int x = 0; x < matrix.length; x++) {
 			for (int y = 0; y < matrix.length; y++) {
 				System.out.print(matrix[x][y] +"  ");
